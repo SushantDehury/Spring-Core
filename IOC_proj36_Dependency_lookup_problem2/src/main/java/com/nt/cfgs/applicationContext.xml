@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="sub" class="com.nt.beans.Subject" >
+		<property name="bookName" value="SPRING" />
+		<property name="totalBook" value="2" />
+	</bean>
+
+	<bean id="stud" class="com.nt.beans.Student">
+		<property name="name" value="SUSHANT" />
+		<property name="beanTag">
+			<idref bean="sub" />
+		</property>
+	</bean>
+
+</beans>

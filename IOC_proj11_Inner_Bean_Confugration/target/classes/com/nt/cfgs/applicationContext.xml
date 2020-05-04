@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.nt.beans.Persion">
+		<property name="passport">
+			<bean id="past" class="com.nt.beans.Passport">
+				<property name="passportNo" value="12345" />
+				<property name="name" value="sushant" />
+				<property name="address" value="Hyderbad" />
+				<property name="dob">
+					<bean id="dt" class="java.util.Date">
+						<property name="year" value="96" />
+						<property name="month" value="06" />
+						<property name="date" value="16" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+</beans>

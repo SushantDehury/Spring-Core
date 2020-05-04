@@ -1,0 +1,6 @@
+Name                                      Null?             Type
+ -----------------------------------------            -------- ----------------------------
+ SNO                                 NOT NULL    NUMBER(10)
+ SNAME                                                   VARCHAR2(20)
+ COURSE                                                 VARCHAR2(20)
+ DOJ                                                         VARCHAR2(50)

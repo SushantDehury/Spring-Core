@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Here Traget Class bean property and Dependent class bean Class most 
+		be match or must be compatable eachother . Here we getting a chance ambiguity 
+		problem. When multiple Dependent bean calss are having same type then we 
+		can place primary="true" attribute... -->
+
+	<bean id="t" class="com.nt.beans.TourPlan" >
+		<property name="places">
+			<list>
+				<value>Bhubaneswar</value>
+				<value>Sambalbur</value>
+				<value>Deogarh</value>
+				<value>Angul</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tplan2" class="com.nt.beans.TourPlan">
+		<property name="places">
+			<list>
+				<value>Delhi</value>
+				<value>HYD</value>
+				<value>Panjab</value>
+				<value>M.P</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tagent" class="com.nt.beans.TravelAgent" autowire="byType" />
+</beans>

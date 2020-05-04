@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="bikecolor" class="com.nt.beans.Bike" abstract="true">
+		<property name="color">
+			<list>
+				<value>black1</value>
+				<value>black2</value>
+				<value>black3</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="honda" class="com.nt.beans.Bike" parent="bikecolor">
+		<property name="color" >
+			<list merge="true">
+				<value>Red1</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="hero" class="com.nt.beans.Bike" parent="bikecolor">
+		<property name="color">
+			<list >
+				<value>Green1</value>
+				<value>Green2</value>
+			</list>
+		</property>
+	</bean>
+	<!-- <bean id="bike2" class="com.nt.beans.Bike" parent="basebike"> </bean> -->
+
+</beans>

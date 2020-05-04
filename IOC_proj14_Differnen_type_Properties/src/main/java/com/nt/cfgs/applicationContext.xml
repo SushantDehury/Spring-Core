@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="student" class="com.nt.beans.Student">
+		<constructor-arg>
+			<list>
+				<value>sushant</value>
+				<value>Soumya</value>
+				<value>balia</value>
+				<value>partha</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="gulab" class="com.nt.beans.Gulab">
+		<property name="colour">
+			<list>
+				<value>Red</value>
+				<value>Pink</value>
+				<value>White</value>
+				<value>Yellow</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="mobile" class="com.nt.beans.Mobile">
+		<property name="number">
+			<set>
+				<value>1111111111</value>
+				<value>222222222</value>
+				<value>333333333</value>
+				<value>444444444</value>
+			</set>
+		</property>
+	</bean>
+
+	<bean id="dt" class="java.util.Date">
+		<property name="year" value="96" />
+		<property name="month" value="06" />
+		<property name="date" value="16" />
+	</bean>
+
+<!-- <bean id="faculty" class="com.nt.beans.Faculty">
+		<property name="course">
+			<map>
+				<entry key="natraj" value="Adv java" />
+				<entry>
+					<key>
+						<value>hari</value>
+					</key>
+					<value>Core java</value>
+				</entry>
+				<entry key="mahesh">
+					<value>XML
+						WebServices
+					</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	-->
+<bean id="faculty" class="com.nt.beans.Faculty">
+		<property name="course">
+			<map>
+				<entry key="Adv java" value-ref="dt" />
+				<entry>
+					<key>
+						<value>Core java</value>
+					</key>
+					<ref bean="dt" />
+				</entry>
+				<entry key="XML WebServices">
+					<ref bean="dt" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="employee" class="com.nt.beans.Employee">
+		<property name="empComp">
+			<props>
+				<prop key="sushant">infosys</prop>
+				<prop key="soumya">wipro</prop>
+				<prop key="rohit">accenture</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

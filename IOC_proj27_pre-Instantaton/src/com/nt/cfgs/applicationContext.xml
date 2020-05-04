@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Dependent class -->
+	<bean id="dtdc" class="com.nt.beans.DTDC" lazy-init="true"/>
+	<bean id="bluedart" class="com.nt.beans.BlueDart" lazy-init="true"/>
+	<bean id="ffly" class="com.nt.beans.FastFly" lazy-init="true"/>
+	
+	<!-- Targer class -->
+	<bean id="flipkart" class="com.nt.beans.Flipkart" >
+	<property name="courier" ref="bluedart"/>
+	</bean>
+
+</beans>

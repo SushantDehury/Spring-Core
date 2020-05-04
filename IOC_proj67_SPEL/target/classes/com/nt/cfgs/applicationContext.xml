@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dt" class="java.util.Date" />
+
+	<bean id="od" class="com.nt.beans.Order">
+		<property name="orderId" value="#{T(java.lang.Math).random() * 100}" />
+		<property name="orderType" value="urgent" />
+		<property name="orderDate" value="#{dt}" />
+		<property name="items">
+			<list>
+				<value>chicken</value>
+				<value>mutton</value>
+				<value>paneer</value>
+				<value>chhatu</value>
+			</list>
+		</property>
+		<property name="itemsPrice">
+			<map>
+				<entry key="chicken" value="60" />
+				<entry key="mutton" value="100" />
+				<entry key="paneer" value="70" />
+				<entry key="chhatu" value="200" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="shop" class="com.nt.beans.Shopping">
+		<property name="order" value="#{od}"/>
+		<property name="ordersType" value="#{od.orderType}"/>
+		<property name="totalOrder" value="#{od.items.size()}"/>
+		<property name="totalprice" value="#{od.itemsPrice[chicken]+od.itemsPrice[mutton]+od.itemsPrice[paneer]+od.itemsPrice[chhatu]}"/>
+		<property name="local" value="#{systemProperties['java.vm.specification.vendor']}"></property>
+	</bean>
+
+</beans>

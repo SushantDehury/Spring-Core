@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="serviceLocater" class="com.nt.servicelocater.IRCTCserviceLocater" />
+	<bean id="resultanc" factory-bean="serviceLocater" factory-method="getResultTrain">
+		<constructor-arg value="Train"></constructor-arg>
+	</bean>
+
+	<bean id="irctclocalservice" class="com.nt.service.IRCTCLocalServieImpl">
+		<property name="extservice" ref="resultanc"></property>
+	</bean>
+
+</beans>

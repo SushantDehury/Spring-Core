@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="tpl" class="com.nt.beans.TourPlan" >
+		<property name="places">
+			<list>
+				<value>Bhubaneswar</value>
+				<value>Sambalbur</value>
+				<value>Deogarh</value>
+				<value>Angul</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tplan2" class="com.nt.beans.TourPlan" primary="true">
+		<property name="places">
+			<list>
+				<value>Delhi</value>
+				<value>HYD</value>
+				<value>Panjab</value>
+				<value>M.P</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tagent" class="com.nt.beans.TravelAgent" autowire="constructor" />
+</beans>

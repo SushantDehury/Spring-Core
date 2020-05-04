@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+
+	<bean id="dao" class="com.nt.dao.CollegeDAOImpl" scope="singleton"/>
+	
+
+	<bean id="stbo" class="com.nt.bo.StudentBO" scope="prototype" />
+	<bean id="empbo" class="com.nt.bo.EmployeeBO" scope="prototype" />
+
+	<bean id="service" class="com.nt.service.CollegeServiceImpl" scope="singleton">
+		<constructor-arg ref="dao" />
+		<lookup-method name="getStudentBO" bean="stbo" />
+		<lookup-method name="getEmployeeBO" bean="empbo" />
+	</bean>
+	
+	<bean id="bpp" class="com.nt.bpp.DateOfJoining"/>
+
+</beans>

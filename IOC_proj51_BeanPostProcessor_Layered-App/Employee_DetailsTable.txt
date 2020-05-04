@@ -1,0 +1,6 @@
+ Name                                      Null?             Type
+ -----------------------------------------             -------- ----------------------------
+ ENO                                  NOT NULL     NUMBER(10)
+ ENAME                                                     VARCHAR2(20)
+ DESG                                                         VARCHAR2(20)
+ DOJ                                                           VARCHAR2(50)

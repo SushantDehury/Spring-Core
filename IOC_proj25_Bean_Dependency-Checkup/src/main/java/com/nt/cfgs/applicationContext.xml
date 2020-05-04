@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-dependency-check="simple" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- Dependent calss -->
+	<bean id="sub" class="com.nt.beans.Subject">
+	<property name="bookName"  value="SPRING"/>
+	<property name="autherName" value="Nataraz"/>
+	</bean>
+	
+	<!-- Target class -->
+	<bean id="teacher" class="com.nt.beans.Teacher" dependency-check="default">
+	<property name="tname" value="Mr. Natraz"/>
+	<property name="mail" value="nataraz@gmail.com"/>
+	<property name="sub" ref="sub" />
+	</bean>
+</beans>

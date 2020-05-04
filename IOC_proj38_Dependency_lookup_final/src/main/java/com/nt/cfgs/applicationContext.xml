@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="sub" class="com.nt.beans.Subject" scope="prototype">
+		<property name="bookName" value="SPRING" />
+		<property name="totalBook" value="2" />
+	</bean>
+
+	<bean id="stud" class="com.nt.beans.Student" scope="singleton">
+		<property name="name" value="SUSHANT" />
+		<lookup-method name="getSubject" bean="sub"/>
+	</bean>
+
+</beans>

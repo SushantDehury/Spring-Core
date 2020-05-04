@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="basebike" class="com.nt.beans.Bike" abstract="true">
+		<property name="id" value="aaaaaaa01" />
+		<property name="make" value="bajaj" />
+		<property name="engineCC" value="200" />
+	</bean>
+	<bean id="bike1" class="com.nt.beans.Bike" parent="basebike">
+	<property name="id" value="bbbbbb02" />
+	</bean>
+	<bean id="bike2" class="com.nt.beans.Bike" parent="basebike">
+	</bean>
+
+</beans>
