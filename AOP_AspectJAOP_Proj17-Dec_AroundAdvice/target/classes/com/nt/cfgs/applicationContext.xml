@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- Target class -->
+	<bean id="arith" class="com.nt.service.ArithmeticOpreation" />
+	<!-- Advice class -->
+	<bean id="pmAdvice" class="com.nt.aspect.PerformanceMonitoringAdvice" />
+	<bean id="cacheAdvice" class="com.nt.aspect.CacheAdvice" />
+	<bean id="loggin" class="com.nt.aspect.LoggingAdvice"/>
+
+	<!-- Enable AspectJAOP -->
+	<aop:config>
+		<!-- enable PointCut -->
+		<aop:pointcut id="pointcut1"
+			expression="execution(int com.nt.service.ArithmeticOpreation.add(..))" />
+		<aop:pointcut id="pointcut2"
+			expression="execution(* com.nt.service.ArithmeticOpreation.mul(..))" />
+		<aop:pointcut id="pointcut3"
+			expression="execution(* com.nt.service.ArithmeticOpreation.*(..))" />
+			<aop:pointcut id="pointcut4"
+			expression="execution(* com.nt.service.ArithmeticOpreation.*(..))" />
+
+		<!-- Make advice as Aspect -->
+		<aop:aspect id="pmmonitoring1" ref="pmAdvice" order="3">
+			<aop:around method="monitor" pointcut-ref="pointcut1"  />
+		</aop:aspect>
+		<aop:aspect id="pmmonitoring2" ref="pmAdvice" order="2">
+			<aop:around method="monitor" pointcut-ref="pointcut2" />
+		</aop:aspect>
+		<aop:aspect ref="cacheAdvice" order="1">
+			<aop:around method="cache" pointcut-ref="pointcut3" />
+		</aop:aspect>
+		<aop:aspect ref="loggin" order="4">
+			<aop:around method="logging" pointcut-ref="pointcut4" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>

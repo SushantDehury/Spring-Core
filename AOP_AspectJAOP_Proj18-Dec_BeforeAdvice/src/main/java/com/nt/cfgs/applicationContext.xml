@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- Target class -->
+	<bean id="loneApp" class="com.nt.service.LoneAprove" />
+	<!-- Advice class -->
+	<bean id="auditAdvice" class="com.nt.aspect.AuditingAdvice" />
+
+	<!-- Enable AspectJAOP -->
+	<aop:config>
+		<!-- enable PointCut -->
+		<aop:pointcut id="pct1"
+			expression="execution(* com.nt.service.LoneAprove.aproveLone(..)) and args(orderId,name)" />
+		<!-- Make advice as Aspect -->
+		<aop:aspect ref="auditAdvice">
+			<!-- <aop:before method="audit" pointcut-ref="pct1" /> -->
+			<aop:before method="audit" pointcut-ref="pct1"/>
+		</aop:aspect>
+	</aop:config>
+
+</beans>
